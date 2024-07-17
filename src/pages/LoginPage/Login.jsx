@@ -83,7 +83,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#e6e6e6] w-full">
-      <div className="flex flex-col items-center justify-start bg-white rounded-2xl shadow-lg h-[70vh] w-[70vh] p-10">
+      <div className="flex flex-col items-center justify-start bg-white rounded-2xl shadow-lg w-[70vh] p-10">
         <h2 className="tracking-wider text-3xl font-normal text-center p-4 w-full">
           Login Page
         </h2>
