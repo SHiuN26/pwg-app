@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../api/apiRequest";
-import { setAuthToken } from "../../axiosInsyance"; // 修正導入路徑
+import { loginUser } from "../../api/account/account";
+import { setAuthToken } from "../../axiosInsyance";
 import IconSuccess from "../../components/icons/IconSuccess";
 import IconError from "../../components/icons/IconError";
 const validateForm = (email, password) => {
@@ -44,13 +44,11 @@ const Login = () => {
       try {
         const response = await loginUser({ email, password });
         //明碼傳輸密碼，不安全！！！！！！！！！！！！
-        console.log("Login successful", response);
+        // console.log("Login successful", response);
         const token = response.token;
-        console.log("token", token);
+        // console.log("token", token);
         setAuthToken(token);
-        // 將 token 保存到 localStorage
         localStorage.setItem("token", token);
-        // 顯示成功通知
         setNotification({
           show: true,
           success: true,
