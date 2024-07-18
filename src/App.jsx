@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../src/pages/LoginPage/Login";
 import Register from "./pages/RegisterPage/Register";
-import Dashboard from "./pages/Dashboard";
+import DashBoard from "../src/pages/DashBoard/HomePage";
 
 function App() {
   const isAuthenticated = () => {
@@ -22,7 +22,7 @@ function App() {
           path="/dashboard"
           element={
             <PrivateRoute>
-              <Dashboard />
+              <DashBoard />
             </PrivateRoute>
           }
         />

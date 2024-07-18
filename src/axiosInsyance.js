@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "https://api-for-testing-gujp.onrender.com/",
-  timeout: 5000, // 5秒超時
+  timeout: 10000, // 5秒超時
 });
 
 // 設置 JWT Token
