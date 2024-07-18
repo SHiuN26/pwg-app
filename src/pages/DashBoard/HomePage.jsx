@@ -9,7 +9,7 @@ const posts = [
     title: "His mother had always taught him",
     date: "2024-04-30",
     body: "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-    tags: ["history", "american", "crime"],
+    tags: ["environment", "philosophy", "nature"],
   },
   {
     id: 2,
@@ -89,9 +89,9 @@ const DashBoard = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <div className="flex justify-center align-center min-h-screen bg-[#D9D9D9] pt-2 pb-10">
-      <div className="flex flex-col justify-start align-center w-[50%]">
-        <div className="flex justify-between items-center mb-4 ">
+    <div className="flex justify-center items-center min-h-screen bg-[#D9D9D9] pt-6 pb-10">
+      <div className="flex flex-col justify-start align-between">
+        <div className="flex justify-between items-center mb-4">
           <button className="py-[8px] px-[20px] bg-[#F8B959] text-[8px] rounded-full font-normal hover:text-[#E6A5A1]">
             Add New Post
           </button>
@@ -102,30 +102,13 @@ const DashBoard = () => {
             Logout
           </button>
         </div>
-        <div className="flex justify-center align-center w-full text-[18px] font-semibold mb-6">
+        <div className="flex justify-center items-center w-full text-[18px] font-semibold mb-6">
           Post List
         </div>
 
-        {/* <div className="grid grid-cols-3 gap-4 justify-items-center bg-pink-200">
+        <div className="grid grid-cols-3 gap-8">
           {currentPosts.map((post) => (
             <PostCard key={post.id} post={post} />
-          ))}
-        </div> */}
-
-        <div className="grid grid-cols-3 gap-12">
-          {currentPosts.map((post, index) => (
-            <div
-              key={post.id}
-              className={`flex ${
-                index % 3 === 0
-                  ? "justify-start"
-                  : index % 3 === 2
-                  ? "justify-end"
-                  : "justify-center"
-              }`}
-            >
-              <PostCard post={post} />
-            </div>
           ))}
         </div>
 

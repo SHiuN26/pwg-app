@@ -1,18 +1,17 @@
 import React from "react";
-import CardButton from "./CardButton";
 
 const PaginationBar = ({ currentPage, totalPages, onPageChange }) => (
   <div className="flex justify-center mt-10">
     {Array.from({ length: totalPages }, (_, index) => (
-      <CardButton
+      <button
         key={index}
-        className={`bg-[#F8B959] text-white mx-2 ${
+        className={`w-7 h-7 bg-[#F8B959] mx-2 rounded-lg flex items-center justify-center  ${
           currentPage === index + 1 ? "bg-[#F8B959]" : "bg-[#FDEACD]"
         }`}
         onClick={() => onPageChange(index + 1)}
       >
         {index + 1}
-      </CardButton>
+      </button>
     ))}
   </div>
 );
