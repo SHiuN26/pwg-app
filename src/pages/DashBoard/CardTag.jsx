@@ -1,9 +1,11 @@
 import React from "react";
 
 const CardTag = ({ children }) => (
-  <span className="bg-[#EDEACD] text-[#E6A5A1] rounded-full px-3 py-1 text-sm mr-2 mb-2">
-    {children}
-  </span>
+  <div className="flex justify-center align-center">
+    <span className="bg-[#F8B9594D] rounded-full px-3 py-1 text-[8px] opacity-70 text-opacity-100 text-black/100">
+      {children}
+    </span>
+  </div>
 );
 
 export default CardTag;

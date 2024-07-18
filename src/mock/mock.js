@@ -1,6 +1,6 @@
 import axiosInstance from "../axiosInsyance";
 import MockAdapter from "axios-mock-adapter";
-
+import postData from "./postData";
 // 创建一个mock adapter实例
 const mock = new MockAdapter(axiosInstance);
 
@@ -24,15 +24,10 @@ mock.onPost("/api/account/login").reply((config) => {
   return [200, response];
 });
 
-// 模拟用户登录
-// mock.onPost("/api/account/login").reply((config) => {
-//   const credentials = JSON.parse(config.data);
-//   console.log("Login credentials:", credentials);
-//   return [
-//     200,
-//     {
-//       token: "fakeToken123",
-//       user: { id: 1, name: "John Doe" },
-//     },
-//   ];
-// });
+// export const getAllPosts = (page, limit) =>
+//   apiRequest("get", "/api/posts", null, { page, limit });
+
+// 模拟取得貼文列表
+mock
+  .onGet("/api/posts", { params: { page: 1, limit: 9 } })
+  .reply(200, postData);
