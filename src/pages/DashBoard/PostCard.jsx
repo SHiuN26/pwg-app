@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import CardButton from "./CardButton";
 import CardTag from "./CardTag";
 import IconLogo from "../../components/icons/IconLogo";
 import { deletePost } from "../../api/post/post";
+import DeletePostModal from "./DeletePostModal ";
 
 const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
+  const [showModal, setShowModal] = useState(false);
+
   const handleView = () => setCurrentPost(post);
+
+  const handleCancel = () => {
+    setShowModal(false);
+  };
+
+  const clickDelete = () => {
+    setShowModal(true);
+  };
 
   const handleEdit = () => {
     setCurrentPost(post);
@@ -58,11 +69,19 @@ const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
           <CardButton className="bg-[#F8B959]" onClick={handleView}>
             View
           </CardButton>
-          <CardButton className="bg-[#F95A50]" onClick={handleDelete}>
+          <CardButton className="bg-[#F95A50]" onClick={clickDelete}>
             Delete
           </CardButton>
         </div>
       </div>
+      {showModal && (
+        <DeletePostModal
+          postTitle="Post Title"
+          onCancel={handleCancel}
+          onDelete={handleDelete}
+          post={post}
+        />
+      )}
     </div>
   );
 };

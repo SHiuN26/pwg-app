@@ -6,8 +6,10 @@ import NotificationModal from "../../components/utils/NotificationModal";
 import validateForm from "../../utils/validateForm";
 
 const Login = () => {
-  const [email, setEmail] = useState("john@yahoo.com");
-  const [password, setPassword] = useState("john123");
+  // const [email, setEmail] = useState("john@yahoo.com");
+  // const [password, setPassword] = useState("john123");
+  const [email, setEmail] = useState("admin@yahoo.com");
+  const [password, setPassword] = useState("admin123");
   const [filedError, setFiledError] = useState({});
   const [notification, setNotification] = useState({
     show: false,
@@ -35,7 +37,9 @@ const Login = () => {
         const response = await loginUser({ email, password });
         const token = response.token;
         localStorage.setItem("token", token);
-
+        localStorage.setItem("userId", response.userId);
+        localStorage.setItem("username", response.username);
+        localStorage.setItem("role", response.userId === 2 ? "admin" : "user");
         setNotification({
           show: true,
           success: true,

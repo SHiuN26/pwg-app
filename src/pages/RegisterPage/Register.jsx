@@ -47,6 +47,10 @@ const Register = () => {
 
         const token = response.token;
         localStorage.setItem("token", token);
+        localStorage.setItem("userId", response.userId);
+        localStorage.setItem("username", response.username);
+        localStorage.setItem("role", response.userId === 1 ? "admin" : "user");
+        setUser(response);
         setNotification({
           show: true,
           success: true,

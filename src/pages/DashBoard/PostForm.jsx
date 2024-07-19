@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createPost, editPost } from "../../api/post/post";
+import MultiSelect from "./MultiSelect.jsx";
 const TAGS_LIST = [
   "history",
   "american",
@@ -27,12 +28,10 @@ const PostForm = ({
   const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
   const [errors, setErrors] = useState({});
-  const [showOptions, setShowOptions] = useState(false);
 
-  const handleAddTag = (event) => {
-    const value = event.target.value;
-    if (!tags.includes(value) && tags.length < 3) {
-      setTags([...tags, value]);
+  const handleAddTag = (tag) => {
+    if (!tags.includes(tag) && tags.length < 3) {
+      setTags([...tags, tag]);
     }
   };
 
@@ -109,45 +108,16 @@ const PostForm = ({
               <p className="text-red-500 text-xs mt-1">{errors.body}</p>
             )}
           </div>
+
           <div>
             <label className="block text-sm font-medium mb-1">Tags</label>
-            <select
-              defaultValue=""
-              onFocus={() => setShowOptions(true)}
-              onChange={handleAddTag}
-              disabled={tags.length >= 3}
-              className="w-full border border-[#F8B959] rounded-full px-3 focus:outline-none"
-            >
-              <option value="" disabled>
-                {showOptions ? "Select a tag" : ""}
-              </option>
-              {showOptions &&
-                TAGS_LIST.map((tag) => (
-                  <option key={tag} value={tag}>
-                    {tag}
-                  </option>
-                ))}
-            </select>
-
-            {tags.length > 0 && (
-              <div className="flex flex-wrap mt-2">
-                {tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-[#F8B959] text-white text-xs px-2 py-1 rounded-full mr-2 mb-2"
-                  >
-                    {tag}
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveTag(tag)}
-                      className="ml-1"
-                    >
-                      x
-                    </button>
-                  </span>
-                ))}
-              </div>
-            )}
+            <MultiSelect
+              options={TAGS_LIST}
+              selectedOptions={tags}
+              onAddTag={handleAddTag}
+              onRemoveTag={handleRemoveTag}
+              maxSelection={3}
+            />
             {errors.tags && (
               <p className="text-red-500 text-xs mt-1">{errors.tags}</p>
             )}
