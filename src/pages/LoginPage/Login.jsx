@@ -6,8 +6,8 @@ import NotificationModal from "../../components/utils/NotificationModal";
 import validateForm from "../../utils/validateForm";
 
 const Login = () => {
-  const [email, setEmail] = useState("admin@yahoo.com");
-  const [password, setPassword] = useState("admin123");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [filedError, setFiledError] = useState({});
   const [notification, setNotification] = useState({
     show: false,
