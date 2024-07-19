@@ -7,9 +7,9 @@ import NotificationModal from "../../components/utils/NotificationModal";
 import validateForm from "../../utils/validateForm";
 
 const Register = () => {
-  const [username, setUserName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
   const [filedError, setFiledError] = useState({});
   const [notification, setNotification] = useState({
