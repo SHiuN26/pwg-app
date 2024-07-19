@@ -136,10 +136,7 @@ const DashBoard = () => {
         ) : null}
 
         {currentPost && !showPostForm ? (
-          <ViewPost
-            currentPost={currentPost}
-            className="w-[800px] h-[100vh] bg-green-400"
-          />
+          <ViewPost currentPost={currentPost} />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {posts.map((post) => (
