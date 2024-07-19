@@ -5,13 +5,18 @@ const axiosInstance = axios.create({
   timeout: 10000, // 5秒超時
 });
 
-// 設置 JWT Token
-export const setAuthToken = (token) => {
-  if (token) {
-    axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  } else {
-    delete axiosInstance.defaults.headers.common["Authorization"];
+// 設置請求攔截器，將 JWT Token 添加到請求頭部
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token"); // 假設 JWT Token 存儲在 localStorage
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
-};
+);
 
 export default axiosInstance;

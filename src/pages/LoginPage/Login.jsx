@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/account/account";
-import { setAuthToken } from "../../axiosInsyance";
 import InputField from "../../components/utils/InputField";
 import NotificationModal from "../../components/utils/NotificationModal";
 import validateForm from "../../utils/validateForm";
 
 const Login = () => {
-  const [email, setEmail] = useState("admin@yahoo.com");
-  const [password, setPassword] = useState("admin123");
+  const [email, setEmail] = useState("john@yahoo.com");
+  const [password, setPassword] = useState("john123");
   const [filedError, setFiledError] = useState({});
   const [notification, setNotification] = useState({
     show: false,
@@ -35,8 +34,8 @@ const Login = () => {
       try {
         const response = await loginUser({ email, password });
         const token = response.token;
-        setAuthToken(token);
         localStorage.setItem("token", token);
+
         setNotification({
           show: true,
           success: true,

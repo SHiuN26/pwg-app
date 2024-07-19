@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../api/account/account";
-import { setAuthToken } from "../../axiosInsyance";
 import InputField from "../../components/utils/InputField";
 import SelectField from "../../components/utils/SelectField";
 import NotificationModal from "../../components/utils/NotificationModal";
@@ -48,8 +47,6 @@ const Register = () => {
 
         const token = response.token;
         localStorage.setItem("token", token);
-        setAuthToken(token);
-
         setNotification({
           show: true,
           success: true,
