@@ -4,10 +4,11 @@ import CardTag from "./CardTag";
 import IconLogo from "../../components/icons/IconLogo";
 import { deletePost } from "../../api/post/post";
 import DeletePostModal from "./DeletePostModal ";
+import { useLoading } from "../../contexts/LoadingProvider";
 
 const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
   const [showModal, setShowModal] = useState(false);
-
+  const { setLoading } = useLoading();
   const handleView = () => setCurrentPost(post);
 
   const handleCancel = () => {
@@ -24,12 +25,16 @@ const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
   };
 
   const handleDelete = async () => {
+    setLoading(true);
+    setShowModal(false);
     try {
       await deletePost(post.id);
       setCurrentPost(null);
       getTotalPosts();
     } catch (error) {
       console.error("Error deleting post:", error);
+    } finally {
+      setLoading(false);
     }
   };
 

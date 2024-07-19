@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { createPost, editPost } from "../../api/post/post";
 import MultiSelect from "./MultiSelect.jsx";
+import { useLoading } from "../../contexts/LoadingProvider";
+
 const TAGS_LIST = [
   "history",
   "american",
@@ -28,6 +30,7 @@ const PostForm = ({
   const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
   const [errors, setErrors] = useState({});
+  const { setLoading } = useLoading();
 
   const handleAddTag = (tag) => {
     if (!tags.includes(tag) && tags.length < 3) {
@@ -51,6 +54,7 @@ const PostForm = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validate()) {
+      setLoading(true);
       try {
         if (post) {
           await editPost(post.id, { title, body, tags });
@@ -66,6 +70,8 @@ const PostForm = ({
         setShowPostForm(false);
       } catch (error) {
         console.error("Error creating post:", error);
+      } finally {
+        setLoading(false);
       }
     }
   };

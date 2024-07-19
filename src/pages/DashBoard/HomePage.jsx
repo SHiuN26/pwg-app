@@ -8,6 +8,8 @@ import { getAllAccounts } from "../../api/account/account";
 import PostForm from "./PostForm";
 import InfoCard from "./InfoCard";
 
+import { useLoading } from "../../contexts/LoadingProvider";
+
 const DashBoard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [posts, setPosts] = useState([]);
@@ -18,6 +20,7 @@ const DashBoard = () => {
   const [allAccounts, setAllAccounts] = useState();
   const [totalPosts, setTotalPosts] = useState();
 
+  const { setLoading } = useLoading();
   const navigate = useNavigate();
 
   const role = localStorage.getItem("role");
@@ -41,6 +44,7 @@ const DashBoard = () => {
   };
 
   const getTotalPosts = async () => {
+    setLoading(true);
     try {
       if (role === "user") {
         const response = await getMyPosts(currentPage, postsPerPage);
@@ -69,6 +73,8 @@ const DashBoard = () => {
       }
     } catch (error) {
       console.log("Get all posts failed", error);
+    } finally {
+      setLoading(false);
     }
   };
 
