@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/account/account";
 import InputField from "../../components/utils/InputField";
@@ -6,8 +6,6 @@ import NotificationModal from "../../components/utils/NotificationModal";
 import validateForm from "../../utils/validateForm";
 
 const Login = () => {
-  // const [email, setEmail] = useState("john@yahoo.com");
-  // const [password, setPassword] = useState("john123");
   const [email, setEmail] = useState("admin@yahoo.com");
   const [password, setPassword] = useState("admin123");
   const [filedError, setFiledError] = useState({});
@@ -70,8 +68,8 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#e6e6e6] w-full">
-      <div className="flex flex-col items-center justify-start bg-white rounded-2xl shadow-lg w-[70vh] p-10">
-        <h2 className="tracking-wider text-3xl font-normal text-center p-4 w-full">
+      <div className="flex flex-col items-center justify-start bg-white rounded-2xl shadow-lg w-full max-w-md p-6 md:p-10">
+        <h2 className="tracking-wider text-2xl md:text-3xl font-normal text-center p-4 w-full">
           Login Page
         </h2>
         <form
@@ -97,7 +95,7 @@ const Login = () => {
           <div className="flex items-center justify-between mt-12 w-4/5">
             <button
               type="submit"
-              className="rounded-2xl w-full bg-[#F8B959] hover:bg-yellow-400 text-lg py-2 rounded focus:outline-none focus:shadow-outline"
+              className="rounded-2xl w-full bg-[#F8B959] hover:bg-yellow-400 text-lg py-2 md:py-1 rounded focus:outline-none focus:shadow-outline"
             >
               Login
             </button>
@@ -105,7 +103,7 @@ const Login = () => {
           <div className="flex items-center justify-between mt-10 w-4/5">
             <button
               type="button"
-              className="w-full text-center text-[#F8B959] text-3xl tracking-wide font-light"
+              className="w-full text-center text-[#F8B959] text-xl md:text-3xl tracking-wide font-light"
               onClick={() => navigate("/register")}
             >
               Create an account

@@ -50,7 +50,6 @@ const Register = () => {
         localStorage.setItem("userId", response.userId);
         localStorage.setItem("username", response.username);
         localStorage.setItem("role", response.userId === 1 ? "admin" : "user");
-        setUser(response);
         setNotification({
           show: true,
           success: true,
@@ -81,8 +80,8 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#e6e6e6] w-full">
-      <div className="flex flex-col items-center justify-start bg-white rounded-2xl shadow-lg w-[70vh] p-10">
-        <h2 className="tracking-wider text-3xl font-normal text-center p-4 w-full">
+      <div className="flex flex-col items-center justify-start bg-white rounded-2xl shadow-lg w-full max-w-md p-6 md:p-10">
+        <h2 className="tracking-wider text-2xl md:text-3xl font-normal text-center p-4 w-full">
           Register User
         </h2>
         <form
@@ -127,7 +126,7 @@ const Register = () => {
           <div className="flex items-center justify-between mt-12 w-4/5">
             <button
               type="submit"
-              className="rounded-2xl w-full bg-[#F8B959] hover:bg-yellow-400 text-lg py-2 rounded focus:outline-none focus:shadow-outline"
+              className="rounded-2xl w-full bg-[#F8B959] hover:bg-yellow-400 text-lg py-2 md:py-1 rounded focus:outline-none focus:shadow-outline"
             >
               Register
             </button>
@@ -135,7 +134,7 @@ const Register = () => {
           <div className="flex items-center justify-between mt-10 w-4/5">
             <button
               type="button"
-              className="w-full text-center text-[#F8B959] text-3xl tracking-wide font-light"
+              className="w-full text-center text-[#F8B959] text-xl md:text-3xl tracking-wide font-light"
               onClick={() => navigate("/login")}
             >
               Back to Login Page

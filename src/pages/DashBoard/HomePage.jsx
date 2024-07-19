@@ -53,10 +53,9 @@ const DashBoard = () => {
         setCurrentPage(response.page);
         setTotalPages(response.totalPages);
       } else if (role === "admin") {
-        console.log("asdasd");
         const response = await getAllPosts(currentPage, postsPerPage);
         const allAccounts = await getAllAccounts();
-        const MyPosts = await getMyPosts(currentPage, postsPerPage);
+        const allMyPosts = await getMyPosts(currentPage, postsPerPage);
         const formattedPosts = response.data.map((post) => ({
           ...post,
           date: formatDate(post.date),
@@ -65,7 +64,7 @@ const DashBoard = () => {
         setCurrentPage(response.page);
         setTotalPages(response.totalPages);
         setTotalPosts(response.totalPosts);
-        setMyPosts(MyPosts.totalPosts);
+        setMyPosts(allMyPosts.totalPosts);
         setAllAccounts(allAccounts.accounts.length);
       }
     } catch (error) {
@@ -119,7 +118,7 @@ const DashBoard = () => {
         )}
 
         {role === "admin" ? (
-          <div className="grid grid-cols-3 gap-8 mb-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
             <InfoCard
               key="totalCount"
               title={"Total Acount"}
@@ -136,10 +135,10 @@ const DashBoard = () => {
             className="w-[800px] h-[100vh] bg-green-400"
           />
         ) : (
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {posts.map((post) => (
               <PostCard
-                key={post.id}
+                key={post.id + post.title}
                 post={post}
                 currentPost={currentPost}
                 setCurrentPost={setCurrentPost}
