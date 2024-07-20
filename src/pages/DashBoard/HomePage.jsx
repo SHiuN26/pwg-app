@@ -8,7 +8,7 @@ import { getAllAccounts } from "../../api/account/account";
 import PostForm from "./PostForm";
 import InfoCard from "./InfoCard";
 
-import { useLoading } from "../../contexts/LoadingProvider";
+import useLoading from "../../hooks/useLoading";
 
 const DashBoard = () => {
   const [currentPage, setCurrentPage] = useState(1);

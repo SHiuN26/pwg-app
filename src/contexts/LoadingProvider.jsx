@@ -13,7 +13,3 @@ const LoadingProvider = ({ children }) => {
 };
 
 export default LoadingProvider;
-
-export const useLoading = () => {
-  return useContext(LoadingContext);
-};

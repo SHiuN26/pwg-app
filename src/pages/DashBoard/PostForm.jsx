@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createPost, editPost } from "../../api/post/post";
 import MultiSelect from "./MultiSelect.jsx";
-import { useLoading } from "../../contexts/LoadingProvider";
+import useLoading from "../../hooks/useLoading";
 
 const TAGS_LIST = [
   "history",

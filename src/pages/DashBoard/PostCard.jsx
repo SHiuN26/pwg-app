@@ -4,7 +4,7 @@ import CardTag from "./CardTag";
 import IconLogo from "../../components/icons/IconLogo";
 import { deletePost } from "../../api/post/post";
 import DeletePostModal from "./DeletePostModal ";
-import { useLoading } from "../../contexts/LoadingProvider";
+import useLoading from "../../hooks/useLoading";
 
 const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
   const [showModal, setShowModal] = useState(false);
