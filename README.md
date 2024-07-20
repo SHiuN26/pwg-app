@@ -1,3 +1,4 @@
+
 # React + Vite
 
 This is a front-end project developed using React and Vite, combined with TailwindCSS to enhance development efficiency and user experience. This project utilizes modern development tools and frameworks, aiming to provide an efficient, responsive user interface.
@@ -16,28 +17,54 @@ This is a front-end project developed using React and Vite, combined with Tailwi
 
 ### Prerequisites
 
-Ensure your development environment has Node.js and Yarn installed. You can run the following commands to check their installation status:
+Please ensure your Node.js version is 20.15.0 or higher. It is recommended to use Node.js 20.15.1 to ensure all features work correctly.
 
-```bash
+\`\`\`bash
 node --version
 yarn --version
-```
+\`\`\`
 
 ## Installation
 
 1. Clone the project to your local machine:
-   git clone https://github.com/your-username/your-project-name.git
+   \`\`\`bash
+   git clone https://github.com/SHiuN26/pwg-app.git
+   \`\`\`
 2. Enter the project directory:
-   cd your-project-name
+   \`\`\`bash
+   cd pwg-app
+   \`\`\`
 3. Install project dependencies:
+   \`\`\`bash
    yarn install
+   \`\`\`
 
-4. Run the project, after installing all dependencies, you can start the development server by running the following command:
+## Running the Project
+
+After installing all dependencies, you can start the development server by running the following command:
+   \`\`\`bash
    yarn dev
+   \`\`\`
+
+## Build for Production
+
+To build the project for production, run:
+   \`\`\`bash
+   yarn build
+   \`\`\`
+
+## Preview Production Build
+
+To preview the production build, run:
+   \`\`\`bash
+   yarn preview
+   \`\`\`
+
+---
 
 # React + Vite 專案
 
-這是一個使用 React 和 Vite 開發的前端專案，結合了 TailwindCSS 來提升開發效率和用戶體驗
+這是一個使用 React 和 Vite 開發的前端專案，結合了 TailwindCSS 來提升開發效率和用戶體驗。此專案利用現代開發工具和框架，旨在提供高效且響應迅速的用戶介面。
 
 ## 功能介紹
 
@@ -53,22 +80,47 @@ yarn --version
 
 ### 前提條件
 
-確保你的開發環境中已安裝了 Node.js 和 Yarn。你可以運行以下命令來檢查它們的安裝狀態：
+請確保你的 Node.js 版本為 20.15.0 或以上。推薦使用 Node.js 20.15.1 以確保所有功能正常工作。
 
-```bash
+\`\`\`bash
 node --version
 yarn --version
+\`\`\`
 
+## 安裝
 
-##安裝
-1.clone專案到本地機器：
-git clone https://github.com/your-username/your-project-name.git
-2.進入專案目錄：
-cd your-project-name
-3.安裝專案依賴：
-yarn install
+1. 將專案克隆到本地機器：
+   \`\`\`bash
+   git clone https://github.com/SHiuN26/pwg-app.git
+   \`\`\`
+2. 進入專案目錄：
+   \`\`\`bash
+   cd pwg-app
+   \`\`\`
+3. 安裝專案依賴：
+   \`\`\`bash
+   yarn install
+   \`\`\`
 
-4.運行專案，在安裝完所有依賴後，你可以通過運行以下命令啟動開發服務器：
-yarn dev
+## 運行專案
 
-```
+在安裝完所有依賴後，你可以通過運行以下命令啟動開發服務器：
+   \`\`\`bash
+   yarn dev
+   \`\`\`
+
+## 構建生產環境
+
+要為生產環境構建專案，運行：
+   \`\`\`bash
+   yarn build
+   \`\`\`
+
+## 預覽生產環境構建
+
+要預覽生產環境構建，運行：
+   \`\`\`bash
+   yarn preview
+   \`\`\`
+
+---
