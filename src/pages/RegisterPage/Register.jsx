@@ -5,6 +5,7 @@ import InputField from "../../components/utils/InputField";
 import SelectField from "../../components/utils/SelectField";
 import NotificationModal from "../../components/utils/NotificationModal";
 import validateForm from "../../utils/validateForm";
+import useLoading from "../../hooks/useLoading";
 
 const Register = () => {
   const [username, setUserName] = useState("");
@@ -18,6 +19,7 @@ const Register = () => {
     message: "",
   });
   const navigate = useNavigate();
+  const { loading, setLoading } = useLoading();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,6 +38,7 @@ const Register = () => {
       setFiledError(validationErrors);
     } else {
       setFiledError({});
+      setLoading(true);
       try {
         const response = await registerUser({
           username,
@@ -66,6 +69,8 @@ const Register = () => {
           success: false,
           message: error?.response?.data?.error || "Registration failed",
         });
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -125,6 +130,7 @@ const Register = () => {
           />
           <div className="flex items-center justify-between mt-12 w-4/5">
             <button
+              disabled={loading}
               type="submit"
               className="rounded-2xl w-full bg-[#F8B959] hover:bg-yellow-400 text-lg py-2 md:py-1 rounded focus:outline-none focus:shadow-outline"
             >

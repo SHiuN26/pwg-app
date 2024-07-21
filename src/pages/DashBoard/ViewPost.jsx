@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { viewPost } from "../../api/post/post";
+import useLoading from "../../hooks/useLoading";
 
 const ViewPost = ({ currentPost }) => {
   const [currView, setCurrView] = useState(null);
+  const { setLoading } = useLoading();
 
   const getViewsPost = async () => {
+    setLoading(true);
     try {
       const response = await viewPost(currentPost.id);
       setCurrView(response);
     } catch (error) {
       console.log("Get all posts failed", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -18,7 +23,7 @@ const ViewPost = ({ currentPost }) => {
   }, [currentPost]);
 
   return (
-    <div className="flex flex-col justify-start items-center p-6 md:p-12 bg-white w-[230px] h-[245px] md:w-full md:max-w-full lg:max-w-4xl md:h-auto rounded-xl">
+    <div className="flex flex-col justify-start items-center p-6 md:p-12 bg-white w-[230px] h-[245px] md:w-[720px] md:h-auto rounded-xl">
       <div className="flex justify-start items-center w-full text-lg md:text-xl font-semibold my-2 md:my-4 lg:my-6">
         {currView?.title}
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoading } from "../../contexts/LoadingProvider";
+import useLoading from "../../hooks/useLoading";
 
 const LoadingModal = () => {
   const { loading } = useLoading();

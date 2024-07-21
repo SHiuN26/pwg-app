@@ -4,6 +4,7 @@ import { loginUser } from "../../api/account/account";
 import InputField from "../../components/utils/InputField";
 import NotificationModal from "../../components/utils/NotificationModal";
 import validateForm from "../../utils/validateForm";
+import useLoading from "../../hooks/useLoading";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ const Login = () => {
     message: "",
   });
   const navigate = useNavigate();
+  const { loading, setLoading } = useLoading();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,6 +33,7 @@ const Login = () => {
       setFiledError(validationErrors);
     } else {
       setFiledError({});
+      setLoading(true);
       try {
         const response = await loginUser({ email, password });
         const token = response.token;
@@ -54,6 +57,8 @@ const Login = () => {
           success: false,
           message: "Invalid credentials",
         });
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -95,6 +100,7 @@ const Login = () => {
           <div className="flex items-center justify-between mt-12 w-4/5">
             <button
               type="submit"
+              disabled={loading}
               className="rounded-2xl w-full bg-[#F8B959] hover:bg-yellow-400 text-lg py-2 md:py-1 rounded focus:outline-none focus:shadow-outline"
             >
               Login

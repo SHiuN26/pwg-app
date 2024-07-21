@@ -8,6 +8,18 @@
 //     "message": "Login successful"
 //   }
 
+// https://api-for-testing-gujp.onrender.com/api/account/register
+
+// {
+//     "message": "Account registered successfully",
+//     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiZW1haWwiOiJ1c2VyMkB5YWhvby5jb20iLCJ1c2VySWQiOjQsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE2MDk5MTc2LCJleHAiOjE3MTYxODU1NzZ9.A9OqQUr2Cx1aJ9BuoS2gCD7BK-Y1AWyGEEva_-PdHDQ",
+//     "account": {
+//         "userId": 2,
+//         "username": "Admin",
+//         "email": "admin@yahoo.com"
+//     }
+//  }
+
 //   https://api-for-testing-gujp.onrender.com/api/posts?page=1&limit=6
 
 // {
@@ -175,16 +187,16 @@
 //           "history"
 //         ]
 //       },
-//       {
-//         "id": 7,
-//         "userId": 2,
-//         "title": "Fantasy Realms",
-//         "body": "Exploring the worlds created in fantasy literature.",
-//         "date": "2024-06-18 5:35:17 PM",
-//         "tags": [
-//           "fantasy",
-//           "fiction"
-//         ]
-//       }
+//   {
+//     "id": 7,
+//     "userId": 2,
+//     "title": "Fantasy Realms",
+//     "body": "Exploring the worlds created in fantasy literature.",
+//     "date": "2024-06-18 5:35:17 PM",
+//     "tags": [
+//       "fantasy",
+//       "fiction"
+//     ]
+//   }
 //     ]
 //   }

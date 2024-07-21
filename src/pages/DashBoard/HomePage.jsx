@@ -8,7 +8,7 @@ import { getAllAccounts } from "../../api/account/account";
 import PostForm from "./PostForm";
 import InfoCard from "./InfoCard";
 
-import { useLoading } from "../../contexts/LoadingProvider";
+import useLoading from "../../hooks/useLoading";
 
 const DashBoard = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +41,11 @@ const DashBoard = () => {
   const onPostFromCancel = () => {
     setShowPostForm(false);
     setCurrentPost(null);
+  };
+
+  const handleBack = () => {
+    setCurrentPost(null);
+    getTotalPosts();
   };
 
   const getTotalPosts = async () => {
@@ -97,7 +102,8 @@ const DashBoard = () => {
           <button
             className="py-[8px] px-[20px] bg-[#F8B959] text-[8px] rounded-full font-normal hover:text-[#E6A5A1]"
             onClick={() =>
-              currentPost ? setCurrentPost(null) : setShowPostForm(true)
+              // currentPost ? setCurrentPost(null) : setShowPostForm(true)
+              currentPost ? handleBack() : setShowPostForm(true)
             }
           >
             {currentPost ? "Back" : "Add New Post"}
@@ -123,7 +129,7 @@ const DashBoard = () => {
           />
         )}
 
-        {role === "admin" ? (
+        {role === "admin" && !currentPost ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
             <InfoCard
               key="totalCount"
