@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://api-for-testing-gujp.onrender.com/",
+  // baseURL: "https://api-for-testing-gujp.onrender.com/",
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000, // 5秒超時
 });
 
