@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PostCard from "./PostCard";
-import PaginationBar from "./PaginationBar"; // 確保路徑大小寫正確
+import PaginationBar from "./PaginationBar";
 import ViewPost from "./ViewPost";
 import { useNavigate } from "react-router-dom";
 import { getAllPosts, getMyPosts } from "../../api/post/post";
@@ -65,13 +65,13 @@ const DashBoard = () => {
         const response = await getAllPosts(currentPage, postsPerPage);
         const allAccounts = await getAllAccounts();
         const allMyPosts = await getMyPosts(currentPage, postsPerPage);
-        const formattedPosts = response.data.map((post) => ({
+        const formattedPosts = allMyPosts.data.map((post) => ({
           ...post,
           date: formatDate(post.date),
         }));
         setPosts(formattedPosts);
-        setCurrentPage(response.page);
-        setTotalPages(response.totalPages);
+        setCurrentPage(allMyPosts.page);
+        setTotalPages(allMyPosts.totalPages);
         setTotalPosts(response.totalPosts);
         setMyPosts(allMyPosts.totalPosts);
         setAllAccounts(allAccounts.accounts.length);
@@ -97,14 +97,11 @@ const DashBoard = () => {
 
   return (
     <div className="flex justify-center items-start min-h-screen bg-[#D9D9D9] pt-6 pb-10">
-      <div className="flex flex-col justify-start align-between">
-        <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col justify-start align-between w-full md:w-auto">
+        <div className="flex justify-between items-center mb-4 md:w-full">
           <button
             className="py-[8px] px-[20px] bg-[#F8B959] text-[8px] rounded-full font-normal hover:text-[#E6A5A1]"
-            onClick={() =>
-              // currentPost ? setCurrentPost(null) : setShowPostForm(true)
-              currentPost ? handleBack() : setShowPostForm(true)
-            }
+            onClick={() => (currentPost ? handleBack() : setShowPostForm(true))}
           >
             {currentPost ? "Back" : "Add New Post"}
           </button>
@@ -129,8 +126,9 @@ const DashBoard = () => {
           />
         )}
 
-        {role === "admin" && !currentPost ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+        {(role === "admin" && !currentPost) ||
+        (role === "admin" && showPostForm) ? (
+          <div className="flex flex-col md:flex-row justify-center md:justify-between items-center w-full">
             <InfoCard
               key="totalCount"
               title={"Total Acount"}
@@ -142,9 +140,11 @@ const DashBoard = () => {
         ) : null}
 
         {currentPost && !showPostForm ? (
-          <ViewPost currentPost={currentPost} />
+          <div className="flex justify-center items-center w-full">
+            <ViewPost currentPost={currentPost} />
+          </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:grid md:grid-cols-3 md:gap-8  flex flex-col justify-start items-center w-full h-auto">
             {posts.map((post) => (
               <PostCard
                 key={post.id + post.title}

@@ -33,9 +33,7 @@ const PostForm = ({
   const { setLoading } = useLoading();
 
   const handleAddTag = (tag) => {
-    if (!tags.includes(tag) && tags.length < 3) {
-      setTags([...tags, tag]);
-    }
+    setTags([...tags, tag]);
   };
 
   const handleRemoveTag = (tag) => {
@@ -84,9 +82,13 @@ const PostForm = ({
     }
   }, [post]);
 
+  useEffect(() => {
+    setErrors({});
+  }, [title, body, tags]);
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-      <div className="w-[460px] h-[512px] bg-white shadow-lg rounded-lg px-[75.7px] py-[53.87px]">
+      <div className="md:w-[460px] md:h-[512px] bg-white shadow-lg rounded-lg md:px-[75.7px] md:py-[53.87px] p-6 w-full h-auto">
         <h2 className="text-center text-[26px] mb-6">
           {post ? "Edit Post" : "Add A Post"}
         </h2>
@@ -122,7 +124,6 @@ const PostForm = ({
               selectedOptions={tags}
               onAddTag={handleAddTag}
               onRemoveTag={handleRemoveTag}
-              maxSelection={3}
             />
             {errors.tags && (
               <p className="text-red-500 text-xs mt-1">{errors.tags}</p>

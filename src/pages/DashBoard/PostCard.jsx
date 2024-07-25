@@ -39,7 +39,7 @@ const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between items-center bg-white shadow-lg rounded-lg p-5  w-[230px] h-[245px]">
+    <div className="flex flex-col justify-between items-center bg-white shadow-lg rounded-lg p-5 mb-4 w-[90%] h-auto  md:w-[230px] md:h-[245px] md:mb-0 ">
       <div className="flex justify-center items-center relative w-full">
         <div className="w-full text-[8px] text-[#F8B959] ">{post.date}</div>
         <div className="absolute top-[-15px] right-[-23px]">
@@ -59,10 +59,10 @@ const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
         </p>
       </div>
 
-      <div className="flex flex-col justify-end item-center mt-2 flex-1">
-        <div className="flex flex-nowrap justify-start items-center">
+      <div className="flex flex-col justify-end item-center mt-2 flex-1 w-full">
+        <div className="flex flex-wrap justify-start items-center overflow-hidden max-h-[30px] overflow-y-auto">
           {post.tags.map((tag) => (
-            <div className="mr-2" key={tag}>
+            <div className="mr-2 mb-1" key={tag}>
               <CardTag>{tag}</CardTag>
             </div>
           ))}
@@ -79,6 +79,7 @@ const PostCard = ({ post, setCurrentPost, getTotalPosts, setShowPostForm }) => {
           </CardButton>
         </div>
       </div>
+
       {showModal && (
         <DeletePostModal
           postTitle="Post Title"

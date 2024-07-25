@@ -1,21 +1,11 @@
 import React, { useState } from "react";
 
-const MultiSelect = ({
-  options,
-  selectedOptions,
-  onAddTag,
-  onRemoveTag,
-  maxSelection,
-}) => {
+const MultiSelect = ({ options, selectedOptions, onAddTag, onRemoveTag }) => {
   const [showOptions, setShowOptions] = useState(false);
 
   const handleSelectChange = (event) => {
     const value = event.target.value;
-    if (
-      value &&
-      !selectedOptions.includes(value) &&
-      selectedOptions.length < maxSelection
-    ) {
+    if (value && !selectedOptions.includes(value)) {
       onAddTag(value);
     }
   };
@@ -42,24 +32,23 @@ const MultiSelect = ({
             ))}
           </div>
         )}
-        {selectedOptions.length < maxSelection && (
-          <select
-            defaultValue=""
-            onFocus={() => setShowOptions(true)}
-            onChange={handleSelectChange}
-            className="flex-grow focus:outline-none text-[14px]"
-          >
-            <option value="" disabled>
-              {showOptions ? null : ""}
-            </option>
-            {showOptions &&
-              options.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-          </select>
-        )}
+
+        <select
+          defaultValue=""
+          onFocus={() => setShowOptions(true)}
+          onChange={handleSelectChange}
+          className="flex-grow focus:outline-none text-[14px]"
+        >
+          <option value="" disabled>
+            {showOptions ? null : ""}
+          </option>
+          {showOptions &&
+            options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+        </select>
       </div>
     </div>
   );
